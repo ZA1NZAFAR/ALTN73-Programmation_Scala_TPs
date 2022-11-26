@@ -116,6 +116,13 @@ object TP3 {
       true
     }
   }
+  def comparateurV2(l1: List[String]): (List[String]) => Boolean = {
+    def comparateur(l2: List[String]): Boolean = {
+      if (l2.sameElements(l1)) true else false
+    }
+
+    comparateur
+  }
 
 
   //Ex8
@@ -155,28 +162,44 @@ object TP3 {
   //magique
   //La deuxième fonction vérifie si la matrice passée en paramètre est un carré
   //parfait
+  //Rappel 1: Un carré magique est une matrice carrée dont la somme des lignes, des
+  //colonnes et des deux diagonales sont égales.
+  //Rappel 2 : Un carré magique parfait est un carré magique dont les valeurs sont
+  //comprises entre 1 et n*n
 
   def carreMagiqueParfait(tab: Array[Array[Int]]): (Boolean, Boolean) = {
     def carreMagique: Boolean = {
       var res = true
-      val somme = tab(0).sum
+      var somme = 0
       for (i <- tab.indices) {
-        if (tab(i).sum != somme) res = false
+        somme += tab(i)(i)
+      }
+      for (i <- tab.indices) {
+        var sommeLigne = 0
+        var sommeColonne = 0
+        for (j <- tab(i).indices) {
+          sommeLigne += tab(i)(j)
+          sommeColonne += tab(j)(i)
+        }
+        if (sommeLigne != somme || sommeColonne != somme) res = false
       }
       res
     }
 
     def carreParfait: Boolean = {
+      var estMagique = carreMagique
       var res = true
-      val somme = tab(0).sum
       for (i <- tab.indices) {
-        if (tab(i).sum != somme) res = false
+        for (j <- tab(i).indices) {
+          if (!estMagique || tab(i)(j) < 1 || tab(i)(j) > tab.length * tab.length) res = false
+        }
       }
       res
     }
 
     (carreMagique, carreParfait)
   }
+
 
 
   def main(args: Array[String]): Unit = {
