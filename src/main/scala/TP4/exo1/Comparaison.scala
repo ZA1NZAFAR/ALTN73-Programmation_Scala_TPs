@@ -1,4 +1,4 @@
-package TP4
+package TP4.exo1
 
 class Comparaison {
   def egal(x: Convertible, y: Convertible): Boolean = x.convertir() == y.convertir()
@@ -11,13 +11,11 @@ class Comparaison {
     var i = 0
     var j = 0
     var tmp = tab(0)
-    for (i <- tab.indices) {
-      for (j <- tab.indices) {
-        if (inferieur(tab(i), tab(j))) {
-          tmp = tab(i)
-          tab(i) = tab(j)
-          tab(j) = tmp
-        }
+    for (i <- tab.indices ; j <- tab.indices) {
+      if (inferieur(tab(i), tab(j))) {
+        tmp = tab(i)
+        tab(i) = tab(j)
+        tab(j) = tmp
       }
     }
     tab

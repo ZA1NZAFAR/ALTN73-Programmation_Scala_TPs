@@ -1,5 +1,4 @@
-package TP4
-
+package TP4.exo1
 
 // use trait Convertible
 

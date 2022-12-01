@@ -1,4 +1,4 @@
-package TP4
+package TP4.exo1
 
 object Main {
 
@@ -10,7 +10,11 @@ object Main {
     var x = new Comparaison()
 
     println(x.egal(c, date))
+    var xx = x.trier(Array(c, date, new Compte("titi", 2, 200), new Date(2020, 10, 11)))
 
+    for (i <- xx.indices) {
+      println(xx(i).convertir())
+    }
 
 
   }
