@@ -144,7 +144,7 @@ object TP2 {
     println("Affichage de la couleur orange : ")
     println(L1.tail.tail.head)
 
-    println("Affichage de la liste L1 sans la couleur noir : ")
+    println("Affichage de la liste L1 la couleur noir : ")
     println(L1.tail.tail.tail)
 
     val L2 = "Marron" :: "Beige" :: "Blanc" :: "Noir" :: Nil
@@ -289,7 +289,7 @@ object TP2 {
   //paires de L1.
 
   def E14(list: List[Int]): List[Int] = {
-    (for (i <- list.indices) yield i*i).toList
+    (for (i <- list.filter(x=>x%2==0).indices) yield i*i).toList
   }
 
 //  Exercice 15
